@@ -2,8 +2,6 @@ package com.sona.alexa.dietplan.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +9,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.sona.alexa.dietplan.vo.DietPlanVO;
-import com.sun.javafx.collections.MappingChange.Map;
 
 /**
  * @author sonali.vaid
@@ -23,7 +20,7 @@ public class DietPlanServiceImpl implements DietPlanService {
 	@Override
 	public List<DietPlanVO> getDietPlanDetails(String dayOfWeek) {
 
-		DietPlanVO dietPlanVO = new DietPlanVO();
+//		DietPlanVO dietPlanVO = new DietPlanVO();
 
 		// create map to store
         HashMap<String, List<DietPlanVO>> dietPlanMap = new HashMap<String, List<DietPlanVO>>();
