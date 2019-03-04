@@ -6,6 +6,8 @@ public class DietPlanVO {
 	
 	Integer itemQuantity;
 
+	String itemCategory;
+	
 	public String getItemName() {
 		return itemName;
 	}
@@ -21,4 +23,13 @@ public class DietPlanVO {
 	public void setItemQuantity(Integer itemQuantity) {
 		this.itemQuantity = itemQuantity;
 	}
+
+	public String getItemCategory() {
+		return itemCategory;
+	}
+
+	public void setItemCategory(String itemCategory) {
+		this.itemCategory = itemCategory;
+	}
+	
 }

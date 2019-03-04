@@ -1,5 +1,8 @@
 package com.sona.alexa.dietplan.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import com.sona.alexa.dietplan.vo.DietPlanVO;
 
 /**
@@ -10,7 +13,7 @@ import com.sona.alexa.dietplan.vo.DietPlanVO;
 
 public interface DietPlanService {
 
-	 public DietPlanVO getDietPlanDetails(String dayOfWeek);
+	 public List<DietPlanVO> getDietPlanDetails(String dayOfWeek);
 }
 
 

@@ -1,8 +1,17 @@
 package com.sona.alexa.dietplan.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.sona.alexa.dietplan.vo.DietPlanVO;
+import com.sun.javafx.collections.MappingChange.Map;
 
 /**
  * @author sonali.vaid
@@ -12,28 +21,37 @@ import com.sona.alexa.dietplan.vo.DietPlanVO;
 public class DietPlanServiceImpl implements DietPlanService {
 
 	@Override
-	public DietPlanVO getDietPlanDetails(String dayOfWeek) {
+	public List<DietPlanVO> getDietPlanDetails(String dayOfWeek) {
 
 		DietPlanVO dietPlanVO = new DietPlanVO();
-		switch (dayOfWeek) {
-		case "Monday":
-			dietPlanVO.setItemName("Orange");
-			dietPlanVO.setItemQuantity(1);
-			dietPlanVO.setItemName("Almonds");
-			dietPlanVO.setItemQuantity(5);
-			return dietPlanVO;
-		case "Tuesday":
-			dietPlanVO.setItemName("Apple");
-			dietPlanVO.setItemQuantity(1);
-			dietPlanVO.setItemName("Walnuts");
-			dietPlanVO.setItemQuantity(5);
-			return dietPlanVO;
-		default:
-			dietPlanVO.setItemName("Banana");
-			dietPlanVO.setItemQuantity(1);
-			dietPlanVO.setItemName("Nuts");
-			dietPlanVO.setItemQuantity(5);
-			return dietPlanVO;
-		}
+
+		// create map to store
+        HashMap<String, List<DietPlanVO>> dietPlanMap = new HashMap<String, List<DietPlanVO>>();
+        dietPlanMap.put("Monday", getDietForMonday());
+        
+//        if(dietPlanMap.containsKey(dayOfWeek)) {
+        	return dietPlanMap.values().stream()
+                    .flatMap(Collection::stream)
+                    .collect(Collectors.toList());
+        	
+//        }
+	}
+	
+	private List<DietPlanVO> getDietForMonday(){
+		List<DietPlanVO> dietPlanVos = new ArrayList<>();
+		DietPlanVO dietVo1 = new DietPlanVO();
+		dietVo1.setItemName("Almonds");
+		dietVo1.setItemCategory("Nuts");
+		dietVo1.setItemQuantity(10);		
+		dietPlanVos.add(dietVo1);
+		
+		DietPlanVO dietVo2 = new DietPlanVO();
+		dietVo2.setItemName("Apple");
+		dietVo2.setItemCategory("Fruit");
+		dietVo2.setItemQuantity(1);		
+		dietPlanVos.add(dietVo2);
+		
+		return dietPlanVos;
+		
 	}
 }

@@ -1,5 +1,7 @@
 package com.sona.alexa.dietplan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +23,7 @@ public class DietPlanController {
 	private DietPlanService dietPlanService;
 
 	@GetMapping("/{dayOfWeek}")
-	public DietPlanVO getDietPlanForDay(@PathVariable("dayOfWeek") String dayOfWeek) {
+	public List<DietPlanVO> getDietPlanForDay(@PathVariable("dayOfWeek") String dayOfWeek) {
 		return dietPlanService.getDietPlanDetails(dayOfWeek);
 		
 	}
